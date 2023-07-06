@@ -1,0 +1,107 @@
+@import 'c/artlandiaCSSLibrary';
+
+.solve-blue {
+    color: var(--c-artlandiaStandardBlue);
+}
+
+.solve-earth {
+    color: var(--c-artlandiaEarthBrown);
+}
+
+.solve-modal-icon {
+    --sds-c-icon-color-foreground-default: white;
+}
+
+.solve-hide {
+    display: none;
+}
+
+.solve-large-icon {
+    padding-top: .1rem;
+    transform: scale(1.6,1.6);
+    transform-origin: center center;
+}
+
+.active-icon-color {
+    --slds-c-icon-color-background: var(--c-artlandiaStandardBlue);
+}
+
+.disabled-icon-color {
+    --slds-c-icon-color-background: var(--c-artlandiaCloudGrey);
+}
+
+.stretchButton{
+    display:block;
+    min-width: 100%;
+    --slds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+    --slds-c-button-neutral-color-border: var(--c-artlandiaStandardBlue);
+    --slds-c-button-line-height: 3rem;
+    font-size: large;
+}
+
+.neturalButtonText{
+    --slds-c-button-text-color: var(--c-artlandiaEarthBrown);
+}
+
+.solve-brand {
+    --sds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+}
+
+.curved {
+    border-radius: 15px;
+}
+
+.solve-100-width {
+    width: 100%;
+}
+
+.solve-destroy-icon {
+    right:0px;
+    position: absolute;
+}
+
+.solve-photo-text {
+    width:100%;
+    height: 100%;
+    font-size: -webkit-xxx-large;
+}
+
+.solve-photo-text-enabled {
+    color: var(--c-artlandiaStandardBlue);
+}
+
+.solve-photo-text-disabled {
+    color: var(--c-artlandiaCloudGrey);
+}
+
+.hide {
+    display: none;
+}
+
+.disabled-photo-frame {
+    border: 1px dashed var(--c-artlandiaCloudGrey);
+    border-radius: 15px;
+}
+
+.active-photo-frame {
+    border: 1px dashed var(--c-artlandiaStandardBlue);
+    border-radius: 15px;
+}
+
+.solve-photo-text-disabled {
+    width:100%;
+    height: 100%;
+    font-size: -webkit-xxx-large;
+    color: var(--c-artlandiaCloudGrey);
+}
+
+.solve-photo-text-enabled {
+    width:100%;
+    height: 100%;
+    font-size: -webkit-xxx-large;
+    color: var(--c-artlandiaStandardBlue);
+}
+
+.modal-content {
+    font-size: medium;
+}

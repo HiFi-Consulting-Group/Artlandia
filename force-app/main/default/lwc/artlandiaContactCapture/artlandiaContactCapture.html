@@ -1,0 +1,113 @@
+<template>
+    <div class="slds-theme_default">
+        <div class="slds-grid slds-grid_align-center slds-wrap">
+            <div class="slds-col slds-size_1-of-1">
+                <h1 class="slds-var-m-top_xx-large slds-var-m-bottom_medium slds-text-heading_small">Please share your contact details:</h1>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <label class="slds-form-element__label solve-label" for="firstNameField">
+                    <abbr class="slds-required" title="required">* </abbr>First Name
+                </label>
+                <lightning-input 
+                    id="firstNameField"
+                    name="firstName"
+                    class="slds-var-m-right_x-small"
+                    type="text" 
+                    label="First Name"
+                    variant="label-hidden"
+                    value={firstName}
+                    onchange={handleFirst}
+                    required>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <label class="slds-form-element__label solve-label" for="lastNameField">
+                    <abbr class="slds-required" title="required">* </abbr>Last Name
+                </label>
+                <lightning-input 
+                    id="lastNameField"
+                    name="lastName"
+                    type="text" 
+                    label="Last Name"
+                    variant="label-hidden"
+                    value={lastName}
+                    onchange={handleLast}
+                    required>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_medium">
+                <label class="slds-form-element__label solve-label solve-inverse-text" for="emailField">
+                    <abbr class="slds-required" title="required">* </abbr>Email
+                </label>
+                <lightning-input 
+                    id="emailField"
+                    class="email-input"
+                    name="email"
+                    type="email" 
+                    label="Email"
+                    variant="label-hidden"
+                    value={email}
+                    onchange={handleEmail}
+                    required>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_medium">
+                <label class="slds-form-element__label solve-label" for="cleanupField">
+                    Are you interested in joining the Artlandia Art-Finding Committee?
+                </label>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-input 
+                    id="cleanupField"
+                    type="toggle" 
+                    message-toggle-active="Yes"
+                    message-toggle-inactive="No"
+                    label="Are you interested in joining the Artlandia Art-Finding Committee?"
+                    variant="label-hidden"
+                    value={leadCleanupInterest}
+                    onchange={handleInterest}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-var-m-around_x-large">
+                <button 
+                    label="SHARE"
+                    type="submitButton" 
+                    class="slds-var-m-top_medium slds-button slds-button_brand stretchButton"
+                    onclick={handleSubmit}
+                    disabled={submitDisabled}>
+                    <strong>SHARE</strong>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <c-modal
+        data-id="thankYouModal"
+        hide-close-icon="true">
+        <lightning-formatted-rich-text
+            value={thankYouContent}
+            class="modal-content"
+        ></lightning-formatted-rich-text>
+        <div class="slds-grid slds-wrap slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-large">
+                <button 
+                    label="SUBMIT A NEW PROJECT"
+                    type="submitNewProjectButton" 
+                    class="slds-button slds-button_brand stretchButton"
+                    onclick={handleReturnToStart}>
+                    NEW PROJECT
+                </button>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+                <button 
+                    label="Return to Artlandia Website"
+                    type="returnButton" 
+                    class="slds-var-m-top_medium slds-button slds-button_neutral stretchButton neturalButtonText"
+                    onclick={handleReturnToArtlandiaSite}>
+                    <strong>RETURN TO WEBSITE</strong>
+                </button>
+            </div>
+        </div>
+    </c-modal>
+</template>

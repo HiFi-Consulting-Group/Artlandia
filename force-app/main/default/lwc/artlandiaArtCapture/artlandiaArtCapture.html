@@ -1,0 +1,225 @@
+<template>
+    <div if:true={showSpinner} class="spinnerContainer">
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+    <div class="slds-theme_default">
+        <div class="slds-grid slds-grid_align-center">
+            <div class="slds-col">
+                <h1 class="slds-text-align_center slds-var-p-bottom_x-small slds-text-heading_medium artlandia-earth"><strong>STEP 1:<br>Share the Project Location*</strong></h1>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+
+        </div>
+        <div>
+            <c-leaflet-map-f-s-c draggable="true"></c-leaflet-map-f-s-c>
+        </div>
+        <div class="slds-var-m-top_x-large nslds-var-m-bottom_small">
+            <h1 class="slds-text-align_center slds-var-p-bottom_x-small slds-text-heading_medium artlandia-earth"><Strong>STEP 2:<br>Share Photos From Multiple Angles*</Strong></h1>
+            <input 
+                class="solve-hide" 
+                data-id="photoInput"
+                onchange={handlePhotoUpload} 
+                type="file" 
+                accept="image/*"
+                label="Upload Photo">
+        </div>
+        <div class="slds-grid slds-wrap slds-gutters_x-small">
+            <div class="slds-col slds-size_1-of-4 slds-var-m-top_small">
+                <div data-id="cameraIcon" class="solve-large-icon slds-align_absolute-center active-icon-color">
+                    <lightning-icon
+                        data-name="cameraIcon"
+                        size="large" 
+                        icon-name="custom:custom38" 
+                        alternative-text="Camera" 
+                        title="Camera" 
+                        onclick={handleCameraClick}>
+                    </lightning-icon>
+                </div>
+            </div>
+            <div if:false={hasPhoto1} class="slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <div class="active-photo-frame" alt="The screen capture will appear in this box." onclick={handleCameraClick}>
+                        <p class="solve-photo-text solve-photo-text-enabled slds-align_absolute-center">1*</p>
+                        <div if:true={showPhotoSpinner} class="spinnerContainer">
+                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div data-id="photo1EnclosingDiv" class="hide slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <img class="curved" data-id="photo1">  
+                    <lightning-icon 
+                        name="photo1Remove"
+                        icon-name="action:close" 
+                        alternative-text="Remove Photo" 
+                        title="Remove Photo"
+                        size="xx-small"
+                        onclick={handlePhotoRemove}
+                        class="slds-var-m-around_xx-small solve-destroy-icon">
+                    </lightning-icon>
+                </div>
+            </div>
+            <div if:false={hasPhoto2} class="slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <div class="disabled-photo-frame solve-photo-text-disabled" data-id="photoFrame2" alt="The screen capture will appear in this box." onclick={handleCameraClick}>
+                        <p class="solve-photo-text slds-align_absolute-center">2</p>
+                    </div>  
+                </div>
+            </div>
+            <div data-id="photo2EnclosingDiv" class="hide slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <img class="curved" data-id="photo2">  
+                    <lightning-icon 
+                        name="photo2Remove"
+                        icon-name="action:close" 
+                        alternative-text="Remove Photo" 
+                        title="Remove Photo"
+                        size="xx-small"
+                        onclick={handlePhotoRemove}
+                        class="slds-var-m-around_xx-small solve-destroy-icon">
+                    </lightning-icon>
+                </div>
+            </div>
+            <div if:false={hasPhoto3} class="slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <div class="disabled-photo-frame solve-photo-text-disabled" data-id="photoFrame3" alt="The screen capture will appear in this box." onclick={handleCameraClick}>
+                        <p class="solve-photo-text slds-align_absolute-center">3</p>
+                    </div>  
+                </div>
+            </div>
+            <div data-id="photo3EnclosingDiv" class="hide slds-col slds-size_1-of-4">
+                <div style="position:relative;">
+                    <img class="curved" data-id="photo3">  
+                    <lightning-icon 
+                        name="photo3Remove"
+                        icon-name="action:close" 
+                        alternative-text="Remove Photo" 
+                        title="Remove Photo"
+                        size="xx-small"
+                        onclick={handlePhotoRemove}
+                        class="slds-var-m-around_xx-small solve-destroy-icon">
+                    </lightning-icon>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a onclick={togglePhotoTips} href="javascript:void(0);" class="slds-var-m-top_small slds-text-heading_medium slds-align_absolute-center">
+                <p class="solve-blue">What makes a good photo?</p>
+            </a>
+        </div>
+        <div>
+            <h1 class="slds-text-align_center slds-var-p-bottom_x-small slds-text-heading_medium artlandia-earth slds-var-m-top_x-large"><Strong>STEP 3:<br>Share Additional Details</Strong></h1>
+            <lightning-input 
+                data-name="comments"
+                type="text" 
+                variant="label-hidden"
+                label="Additional Details"
+                placeholder="Add details here...">
+            </lightning-input>
+        </div>
+        <div class="slds-grid slds-wrap slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-large">
+                <button 
+                    label="SUBMIT"
+                    type="submitButton" 
+                    class="slds-var-m-top_medium slds-button slds-button_brand stretchButton"
+                    onclick={handleSubmit}
+                    disabled={submitDisabled}>
+                    <strong>SUBMIT</strong>
+                </button>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-align_absolute-center slds-var-m-bottom_x-large">
+                <a onclick={handleStartOver} href="javascript:void(0);" class="slds-var-m-top_small slds-text-heading_small slds-align_absolute-center">
+                    <p class="solve-blue">Start Over</p>
+                </a>
+            </div>
+        </div>
+        <div class="slds-var-m-left_xx-large slds-var-m-right_xx-large slds-align_absolute-center" onclick={navigateToSolveSite}>
+            <img src={solveLogo} onclick={navigateToSolveSite}>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <c-modal
+        data-id="photoHelpModal"
+        hide-close-icon="true">
+        <lightning-formatted-rich-text
+            value={photoHelpContent}
+            class="modal-content"
+        ></lightning-formatted-rich-text>
+        <button 
+            label="Close Photo Help"
+            type="closePhotoHelpButton" 
+            class="slds-var-m-top_medium slds-button slds-button_brand stretchButton"
+            onclick={togglePhotoTips}>
+            <strong>GOT IT!</strong>
+        </button>
+    </c-modal>
+    <c-modal
+        data-id="startOverModal"
+        hide-close-icon="true">
+        <lightning-formatted-rich-text
+            value={startOverContent}
+            class="modal-content"
+        ></lightning-formatted-rich-text>
+        <div class="slds-grid slds-wrap slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-large">
+                <button 
+                    label="StartOver"
+                    type="startOverButton" 
+                    class="slds-button slds-button_brand stretchButton"
+                    onclick={finishStartOver}>
+                    START OVER
+                </button>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+                <button 
+                    label="CANCEL"
+                    type="Cancel" 
+                    class="slds-var-m-top_medium slds-button slds-button_neutral stretchButton neturalButtonText"
+                    onclick={hideStartOver}>
+                    <strong>CANCEL</strong>
+                </button>
+            </div>
+        </div>
+    </c-modal>
+    <c-modal
+        data-id="howUseModal"
+        hide-close-icon="true">
+        <lightning-formatted-rich-text
+            value={howUseUseContent}
+            class="modal-content"
+        ></lightning-formatted-rich-text>
+        <button 
+            label="ContinueButton"
+            type="continueButton" 
+            class="slds-var-m-top_medium slds-button slds-button_brand stretchButton"
+            onclick={hideHowUseModal}>
+            <strong>I'M READY!</strong>
+        </button>
+    </c-modal>
+
+    <c-modal
+        data-id="thankYouModal"
+        hide-close-icon="true"
+        onclosedialog={handleThankYouDismiss}>
+        <lightning-formatted-rich-text
+            value={thankYouContent}
+            class="modal-content"
+        ></lightning-formatted-rich-text>
+        <div class="slds-grid slds-wrap slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_x-large">
+                <button 
+                    label="Continue"
+                    type="continueButton" 
+                    class="slds-button slds-button_brand stretchButton"
+                    onclick={handleContinue}>
+                    CONTINUE
+                </button>
+            </div>
+        </div>
+    </c-modal>
+
+</template>

@@ -1,0 +1,45 @@
+.solve-blue {
+    color: var(--c-artlandiaStandardBlue);
+}
+
+.stretchButton{
+    display:block;
+    min-width: 100%;
+    --slds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+    --slds-c-button-neutral-color-border: var(--c-artlandiaStandardBlue);
+    --slds-c-button-line-height: 3rem;
+    font-size: large;
+}
+
+.solve-brand {
+    --sds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+    width: 44px;
+    height: 44px;
+}
+
+.solve-float-right {
+    float: right;
+}
+
+.solve-label {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.stretchButton{
+    display:block;
+    min-width: 100%;
+    --slds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+    --slds-c-button-neutral-color-border: var(--c-artlandiaStandardBlue);
+    --slds-c-button-line-height: 3rem;
+    font-size: large;
+}
+
+.neturalButtonText{
+    --slds-c-button-text-color: var(--c-artlandiaEarthBrown);
+    font-size: large;
+}
+
+.modal-content {
+    font-size: medium;
+}

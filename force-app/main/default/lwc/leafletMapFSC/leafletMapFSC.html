@@ -1,0 +1,6 @@
+<template>
+    <div data-id="mapDiv" if:true={showMap} class="map-div slds-box slds-theme_default" lwc:dom="manual"></div>
+    <div if:true={showPinpointCurrentLocButton}>
+        <lightning-button label={currentLocationButtonLabel} icon-name="utility:pinned" variant="success" onclick={searchUserLocation} class="slds-align_absolute-center"></lightning-button>
+    </div>
+</template>

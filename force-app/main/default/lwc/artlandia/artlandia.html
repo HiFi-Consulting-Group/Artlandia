@@ -1,0 +1,45 @@
+<template>
+    <header class="slds-global-header_container">
+        <div class="slds-global-header artlandia-header">
+            <p class="slds-text-align_center slds-var-p-bottom_x-small slds-text-heading_medium">Report <br>Weird Art</p>
+        </div>
+    </header>
+    <div class="slds-var-p-top_xx-large" if:true={showArtCapture}>
+        <c-artlandia-art-capture onsitecaptured={handleArtCaptured} visitor-ip-address={visitorIpAddress} ></c-artlandia-art-capture>
+    </div>
+    <div if:true={showContactCapture}>
+        <c-artlandia-contact-capture></c-artlandia-contact-capture>
+    </div>
+    <c-modal
+        data-id="consentModal"
+        hide-close-icon="true">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                <lightning-formatted-rich-text
+                    value={consentContent}
+                    class="modal-content"
+                ></lightning-formatted-rich-text>
+            </div>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1">
+                    <button 
+                        label="GiveConsentButton"
+                        type="consentButton" 
+                        class="slds-var-m-top_medium slds-button slds-button_brand stretchButton"
+                        onclick={handleYesConsent}>
+                        <strong>YES, I CONSENT</strong>
+                    </button>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <button 
+                        label="NoConsentButton"
+                        type="noConsentButton" 
+                        class="slds-var-m-top_medium slds-button slds-button_neutral stretchButton neturalButtonText"
+                        onclick={handleNoConsent}>
+                        <strong>NO, I DO NOT CONSENT</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </c-modal>
+</template>

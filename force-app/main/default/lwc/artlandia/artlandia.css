@@ -1,0 +1,29 @@
+@import 'c/artlandiaCSSLibrary';
+
+/* Style the header */
+.artlandia-header {
+    background: #3c6d89;
+    color: white;
+    height: fit-content;
+}
+
+.stretchButton{
+    display:block;
+    min-width: 100%;
+    --slds-c-button-brand-color-background: var(--c-artlandiaStandardBlue);
+    --slds-c-button-neutral-color-border: var(--c-artlandiaStandardBlue);
+    --slds-c-button-line-height: 3rem;
+}
+
+.neturalButtonText{
+    --slds-c-button-text-color: var(--c-artlandiaEarthBrown);
+    font-size: large;
+}
+
+.artlandia-earth {
+    color: var(--c-artlandiaEarthBrown);
+}
+
+.modal-content {
+    font-size: medium;
+}

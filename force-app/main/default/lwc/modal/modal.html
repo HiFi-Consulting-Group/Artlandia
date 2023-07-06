@@ -1,0 +1,41 @@
+<template>
+    <template if:true={showModal}>
+        <section
+            data-id="modal-section"
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open"
+        >
+            <div class="slds-modal__container">
+                <div
+                    class="slds-modal__content slds-p-around_medium solve-modal-outline"
+                    id="modal-content-id-1">
+                    <div if:false={hideCloseIcon} class="slds-float_right">
+                        <lightning-button-icon
+                            class="slds-modal__close"
+                            title="Close"
+                            icon-name="utility:close"
+                            onclick={handleDialogClose}
+                        ></lightning-button-icon>
+                    </div>
+                    <div>
+                        <slot
+                            class="slds-modal__content artlandia-earth-text solve-modal-text-size">
+                        </slot>
+                    </div>
+                </div>
+
+                <footer class="slds-modal__footer modal-hidden">
+                    <slot
+                        name="footer"
+                        onslotchange={handleSlotFooterChange}
+                    ></slot>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
