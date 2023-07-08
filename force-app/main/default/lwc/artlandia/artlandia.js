@@ -67,7 +67,7 @@ export default class Artlandia extends NavigationMixin(LightningElement) {
         this.switchToContactCapture(this)
         .then(result => {
             console.log('now set site id on contact capture',reportId);
-            this.template.querySelector('c-artlandia-contact-capture').setSiteReportId(reportId);
+            this.template.querySelector('c-artlandia-contact-capture').setartReportId(reportId);
         }) 
         .catch(error => {
             console.log('error',error);
@@ -89,7 +89,7 @@ export default class Artlandia extends NavigationMixin(LightningElement) {
         console.log('handleReportCreated');
         let reportId = event.detail.reportId;
         console.log('event.detail.reportId',event.detail.reportId);
-        this.template.querySelector('c-artlandia-contact-capture').setSiteReportId(reportId);
+        this.template.querySelector('c-artlandia-contact-capture').setartReportId(reportId);
     }
 
     get consentContent() {

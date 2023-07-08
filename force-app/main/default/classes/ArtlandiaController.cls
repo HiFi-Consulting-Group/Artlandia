@@ -27,7 +27,7 @@ public with sharing class ArtlandiaController {
         cntVersion.VersionData = body;
         insert cntVersion;
 
-        ArtlandiaWithoutSharingController.attachFileToReport(cntVersion.Id, artReportId);
+        ArtlandiaWithoutSharingController.guesAttachFileToReport(cntVersion.Id, artReportId);
 
     } 
 
@@ -42,7 +42,7 @@ public with sharing class ArtlandiaController {
             Id = artReportId
         );
 
-        update report;
+        ArtlandiaWithoutSharingController.guestUpdateReport(report);
     } 
 
 }

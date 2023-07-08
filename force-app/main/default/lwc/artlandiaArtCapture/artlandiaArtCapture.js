@@ -28,7 +28,7 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
     photo2Resized;
     photo3Resized;
 
-    siteReportId;
+    artReportId;
     showSpinner = false;
     showPhotoSpinner = false;
     initalRenderComplete = false;
@@ -287,13 +287,13 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
         let comments = this.template.querySelector('[data-name="comments"]').value;
 
         try {
-            let siteReport = JSON.parse(await createArtReport({lat:lat, lng:lng, comments:comments}));
-            this.siteReportId = siteReport.Id;
+            let artReport = JSON.parse(await createArtReport({lat:lat, lng:lng, comments:comments}));
+            this.artReportId = artReport.Id;
 
             await Promise.all ([
-                addPhotoToArtReport ({fileName:"Site Photo 1", base64Data:base64Photo1, siteReportId:this.siteReportId}),
-                addPhotoToArtReport ({fileName:"Site Photo 2", base64Data:base64Photo2, siteReportId:this.siteReportId}),
-                addPhotoToArtReport ({fileName:"Site Photo 3", base64Data:base64Photo3, siteReportId:this.siteReportId}),
+                addPhotoToArtReport ({fileName:"Site Photo 1", base64Data:base64Photo1, artReportId:this.artReportId}),
+                addPhotoToArtReport ({fileName:"Site Photo 2", base64Data:base64Photo2, artReportId:this.artReportId}),
+                addPhotoToArtReport ({fileName:"Site Photo 3", base64Data:base64Photo3, artReportId:this.artReportId}),
             ]);
 
             this.showSpinner = false;
@@ -309,7 +309,7 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
     handleContinue() {
         this.dispatchEvent(new CustomEvent('sitecaptured', { 
             detail: {
-                reportId: this.siteReportId
+                reportId: this.artReportId
             }
         }));
     }
