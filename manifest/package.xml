@@ -47,5 +47,13 @@
         <members>leafletFSC</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>APIipify</members>
+        <members>GoogleMaps0</members>
+        <members>GoogleMaps1</members>
+        <members>GoogleMaps2</members>
+        <members>GoogleMaps3</members>
+        <name>CspTrustedSite</name>
+    </types>
     <version>58.0</version>
 </Package>
