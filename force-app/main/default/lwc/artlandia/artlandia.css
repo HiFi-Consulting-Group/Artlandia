@@ -2,7 +2,7 @@
 
 /* Style the header */
 .artlandia-header {
-    background: #3c6d89;
+    background: var(--c-artlandiaStandardBlue);
     color: white;
     height: fit-content;
 }
