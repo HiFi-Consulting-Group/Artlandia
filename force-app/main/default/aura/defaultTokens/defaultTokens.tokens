@@ -1,5 +1,5 @@
 <aura:tokens extends="forceCommunity:base">
-	<aura:token name="artlandiaStandardBlue" value="#3A6E89"/>
+	<aura:token name="artlandiaStandardBlue" value="#499ee9"/>
 	<aura:token name="artlandiaEarthBrown" value="#6b6056"/>
 	<aura:token name="artlandiaCloudGrey" value="#d9d8d6"/>
 </aura:tokens>
