@@ -9,15 +9,15 @@ export default class Artlandia extends NavigationMixin(LightningElement) {
 
     connectedCallback () {
         // Sets the theme color to extend into phone screen header
-        let meta = document.createElement("meta");
-        meta.setAttribute("name", "theme-color");
-        meta.setAttribute("content", "#3c6d89");
-        document.getElementsByTagName('head')[0].appendChild(meta);
+        let metaColorSetting = document.createElement("meta");
+        metaColorSetting.setAttribute("name", "theme-color");
+        metaColorSetting.setAttribute("content", "#3c6d89");
+        document.getElementsByTagName('head')[0].appendChild(metaColorSetting);
 
-        let viewportMeta = document.createElement("meta");
-        viewportMeta.setAttribute("name", "viewport");
-        viewportMeta.setAttribute("content", "user-scalable=no, width=device-width, initial-scale=1.0");
-        document.getElementsByTagName('head')[0].appendChild(viewportMeta);
+        let metaViewportSetting = document.createElement("meta");
+        metaViewportSetting.setAttribute("name", "viewport");
+        metaViewportSetting.setAttribute("content", "user-scalable=no, width=device-width, initial-scale=1.0");
+        document.getElementsByTagName('head')[0].appendChild(metaViewportSetting);
     }
 
     renderedCallback() {
