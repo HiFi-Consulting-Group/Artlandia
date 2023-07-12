@@ -11,7 +11,7 @@ export default class Artlandia extends NavigationMixin(LightningElement) {
         // Sets the theme color to extend into phone screen header
         let metaColorSetting = document.createElement("meta");
         metaColorSetting.setAttribute("name", "theme-color");
-        metaColorSetting.setAttribute("content", "#3c6d89");
+        metaColorSetting.setAttribute("content", "#499ee9");
         document.getElementsByTagName('head')[0].appendChild(metaColorSetting);
 
         let metaViewportSetting = document.createElement("meta");
@@ -36,13 +36,9 @@ export default class Artlandia extends NavigationMixin(LightningElement) {
             if (request.status >= 200 && request.status < 400) {
                 let ipAddress = request.responseText;
                 this.visitorIpAddress= ipAddress;
-                console.log('ipAddress',ipAddress);
-                console.log('localStorage',localStorage.getItem('solveConsentGivenIp'));
                 if (ipAddress===localStorage.getItem('solveConsentGivenIp')) {
-                    console.log('already gave consent');
-                    this.handleYesConsent();
+                    this.handleYesConsent(); //already gave consent if their ip address is in the localStorageSetting
                 } else {
-                    console.log('show consent');
                     this.template.querySelector('[data-id="consentModal"]').show();
                 }
             } else {

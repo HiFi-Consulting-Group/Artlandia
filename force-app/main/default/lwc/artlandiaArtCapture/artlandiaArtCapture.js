@@ -14,7 +14,6 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
 
     mapInitialized = false;
     showInstructions = true;
-    mapMarkers = [];
 
     allowedUploadFormats;
 
@@ -42,7 +41,6 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
         //Pull up the current location in the map
         if (!this.mapInitialized) {
             this.mapInitialized = true;
-            console.log('call navigator geolocation');
             navigator.geolocation.getCurrentPosition(this.locationSuccess.bind(this),this.locationError.bind(this),options);
         } 
 
@@ -129,9 +127,6 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
     }
 
     initializeMap(mapLatitude, mapLongitude) {
-        let loc = {location:{Latitude:mapLatitude,Longitude:mapLongitude,},value:'Dragged Target'};
-        this.mapMarkers = [loc];
-
         this.template.querySelector('c-leaflet-map-f-s-c').latitude = mapLatitude;
         this.template.querySelector('c-leaflet-map-f-s-c').longitude = mapLongitude;
 
@@ -458,8 +453,9 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
     }
 
     resizeImage(imgToResize) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             var img = new Image();
+            img.src = imgToResize;
             img.onload = function() {
                 let resizingFactor = 0.2;
                 const canvas = document.createElement("canvas");
@@ -483,7 +479,6 @@ export default class ArtlandiaArtCapture extends NavigationMixin(LightningElemen
                 );
                 resolve(canvas.toDataURL()); 
             }
-            img.src = imgToResize;
         })
 
     }
